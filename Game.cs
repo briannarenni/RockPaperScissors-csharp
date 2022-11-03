@@ -2,6 +2,15 @@ using System;
 
 namespace RPSGame {
     public class Game {
+        // TODO:
+
+
+        // Field
+        Dictionary<int, string> options = new Dictionary<int, string> {
+                {1, "Rock"},
+                {2, "Paper"},
+                {3, "Scissors"}
+            };
 
         public Game() { }
 
@@ -32,46 +41,40 @@ namespace RPSGame {
         // Convert both choices to option str
         public string getOption(int givenChoice) {
             // Should take int and return str choice from dict
-            Dictionary<int, string> options = new Dictionary<int, string> {
-                {1, "rock"},
-                {2, "paper"},
-                {3, "scissors"}
-            };
-            int matchKey = givenChoice;
-            return options[matchKey];
+            return options[givenChoice];
         }
 
         // Returns game result
-        public string getResult(string compOption, string userOption) {
+        public string getResult(int compOption, int userOption) {
             string result;
-            Console.WriteLine($"You threw {userOption}...\n");
+            Console.WriteLine($"You threw {options[userOption]}...");
+            Console.WriteLine();
 
-            if ((compOption == "rock") && (userOption == "scissors")) {
-                result = "You lost...rock beats scissors!";
+            // if (compOption == userOption)
+            //     result = "DRAW";
+            // else if (userOption == ((compOption + 1) % 3))
+            //     result = "WIN";
+            // else
+            //     result = "LOOSE";
 
-            } else if ((compOption == "paper") && (userOption == "rock")) {
-                result = "You lost...paper beats rock!";
-
-            } else if ((compOption == "scissors") && (userOption == "paper")) {
-                result = "You lost...scissors beats paper!";
-
-            } else if ((userOption == "rock") && (compOption == "scissors")) {
-                result = "You win! Rock beats scissors!";
-
-            } else if ((userOption == "paper") && (compOption == "rock")) {
-                result = "You win! Paper beats rock!";
-
-            } else if ((userOption == "scissors") && (compOption == "paper")) {
-                result = "You win! Scissors beats paper!";
-
-            } else if (compOption == userOption) {
+            if (compOption == userOption) {
                 result = "It's a draw!";
-
+            } else if (compOption > userOption) {
+                if ((userOption == 1) && (compOption == 3)) {
+                    result = $"You win! {options[userOption]} beats {options[compOption]}!";
+                } else {
+                    result = $"You lost...{options[compOption]} beats {options[userOption]}";
+                }
             } else {
-                return "Something went wrong.";
+                if ((userOption == 3) && (compOption == 1)) {
+                    result = $"You lost...{options[compOption]} beats {options[userOption]}";
+                } else {
+                    result = $"You win! {options[userOption]} beats {options[compOption]}!";
+                }
             }
-            Console.WriteLine($"The computer threw {compOption}!");
+            Console.WriteLine($"The computer threw {options[compOption]}!");
             return result;
+
 
         }
 

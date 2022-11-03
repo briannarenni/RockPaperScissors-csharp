@@ -15,11 +15,11 @@ namespace RPSGame {
                 int userChoice = play.getUserChoice();
 
                 // Convert both choices to option str
-                string compOption = play.getOption(compChoice);
-                string userOption = play.getOption(userChoice);
+                // string compOption = play.getOption(compChoice);
+                // string userOption = play.getOption(userChoice);
 
                 // Get Result
-                string result = play.getResult(compOption, userOption);
+                string result = play.getResult(compChoice, userChoice);
                 Console.WriteLine(result);
 
                 // ! Play again prompt
@@ -32,7 +32,7 @@ namespace RPSGame {
                     Console.WriteLine("Exiting game...");
                     playAgain = false;
                 }
-
+                Console.WriteLine();
             } while (playAgain);
         }
     }
