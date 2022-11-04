@@ -6,20 +6,17 @@ namespace RPSGame {
         public static void Main(String[] args) {
             Game play = new Game();
             bool playAgain = false;
+
             // Loop start for playAgain()
             do {
                 // Get computer choice
-                int compChoice = play.getCompChoice();
+                var compThrow = play.getCompThrow();
 
                 // Get user Input
-                int userChoice = play.getUserChoice();
-
-                // Convert both choices to option str
-                // string compOption = play.getOption(compChoice);
-                // string userOption = play.getOption(userChoice);
+                var userThrow = play.getUserThrow();
 
                 // Get Result
-                string result = play.getResult(compChoice, userChoice);
+                string result = play.getResult(compThrow, userThrow);
                 Console.WriteLine(result);
 
                 // ! Play again prompt
