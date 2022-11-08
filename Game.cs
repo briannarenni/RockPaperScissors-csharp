@@ -6,7 +6,7 @@ namespace RPSGame {
         Random rnd = new Random();
 
         public enum Throw {
-            Rock,
+            Rock = 1,
             Paper,
             Scissors
         }
